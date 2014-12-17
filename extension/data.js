@@ -13,82 +13,82 @@ var coursesByDepartments = {"AHMA": [{"sbid": "6595", "cnum": "210", "title": "A
 // Returns a list of course IDs for the matched classes (or null if no match).
 // TODO: Write unit tests
 function searchCourseData(input) {
-	var input = trim(input).toUpperCase();
-	// Check if input has spaces
-	if (input.indexOf(' ') == -1) {
-		// Check if input is department code
-		var code = toDepartmentCode(input);
-		if (code) {
-			return findCoursesByDepartment(code);
-		}
-		// Check if input is course number
-		var courses = findCoursesByCourseNumber(input);
-		if (courses.length > 1) {
-			return courses;
-		}
-		if (courses.length == 1) {
-			return courses[0];
-		}
-		// Check if input is part of title
-		courses = findCoursesByDepartmentByTitle(input);
-		if (courses.length >= 1) {
-			return courses;
-		}
-		// TODO Check for department name and course number without space
-		return null;
-	} else {
-		// Check if last chunk contains numbers (in which case it is probably a course number)
-		var chunks = input.split(' ');
-		var lastChunk = getLastChunk(chunks);
-		if (lastChunk.match(/\d+/g)) {
-			var code = toDepartmentCode(trimTail(input, lastChunk));
-			if (code) {
-				var courseId = code + '.' + lastChunk;
-				if (findCoursesByDepartment(code).indexOf(courseId) != -1) {
-					return courseId;
-				}
-			}
-			return null;
-		}
-		// Check if input is full department name
-		var code = toDepartmentCode(input);
-		if (code) {
-			return findCoursesByDepartment(code);
-		}
-		// Check if input matches title
-		var courses = findCoursesByDepartmentByTitle(input);
-		if (courses.length > 0) {
-			return courses;
-		}
-		return null;
-	}
+  var input = trim(input).toUpperCase();
+  // Check if input has spaces
+  if (input.indexOf(' ') == -1) {
+    // Check if input is department code
+    var code = toDepartmentCode(input);
+    if (code) {
+      return findCoursesByDepartment(code);
+    }
+    // Check if input is course number
+    var courses = findCoursesByCourseNumber(input);
+    if (courses.length > 1) {
+      return courses;
+    }
+    if (courses.length == 1) {
+      return courses[0];
+    }
+    // Check if input is part of title
+    courses = findCoursesByDepartmentByTitle(input);
+    if (courses.length >= 1) {
+      return courses;
+    }
+    // TODO Check for department name and course number without space
+    return null;
+  } else {
+    // Check if last chunk contains numbers (in which case it is probably a course number)
+    var chunks = input.split(' ');
+    var lastChunk = getLastChunk(chunks);
+    if (lastChunk.match(/\d+/g)) {
+      var code = toDepartmentCode(trimTail(input, lastChunk));
+      if (code) {
+        var courseId = code + '.' + lastChunk;
+        if (findCoursesByDepartment(code).indexOf(courseId) != -1) {
+          return courseId;
+        }
+      }
+      return null;
+    }
+    // Check if input is full department name
+    var code = toDepartmentCode(input);
+    if (code) {
+      return findCoursesByDepartment(code);
+    }
+    // Check if input matches title
+    var courses = findCoursesByDepartmentByTitle(input);
+    if (courses.length > 0) {
+      return courses;
+    }
+    return null;
+  }
 }
 
 // Returns code of given department (full name, code, or alias).
 // Insensitive to capitalization and padding.
 // Returns empty string if no department matches input.
 function toDepartmentCode(name) {
-	var name = trim(name).toUpperCase();
-	for (var i = 0; i < departments.length; i++) {
-		var deptObj = departments[i];
-		if (name === deptObj.full ||
-		    name === deptObj.code ||
-				deptObj.aliases.indexOf(name) != -1) {
-			return deptObj.code;
-		}
-	}
-	return "";
+  var name = trim(name).toUpperCase();
+  for (var i = 0; i < departments.length; i++) {
+    var deptObj = departments[i];
+    if (name === deptObj.full ||
+        name === deptObj.code ||
+        deptObj.aliases.indexOf(name) != -1) {
+      return deptObj.code;
+    }
+  }
+  return "";
 }
 
 // Returns course IDs for courses in given department.
 // Input must be an all-uppercase department code.
 function findCoursesByDepartment(code) {
-	var courseIds = [];
-	var courses = coursesByDepartments[code];
-	for (var i = 0; i < courses.length; i++) {
-		courseIds.push(code + '.' + courses[i].cnum);
-	}
-	return courseIds;
+  var courseIds = [];
+  var courses = coursesByDepartments[code];
+  for (var i = 0; i < courses.length; i++) {
+    courseIds.push(code + '.' + courses[i].cnum);
+  }
+  return courseIds;
 }
 
 // Returns courses with the given course number.
@@ -97,80 +97,80 @@ function findCoursesByDepartment(code) {
 // Returns an empty list if no matches are found at all.
 // Input must be an exact, all-uppercase, non-padded course number.
 function findCoursesByCourseNumber(courseNumber) {
-	var exactMatches = [];
-	var closeMatches = [];
-	for (var i = 0; i < departments.length; i++) {
-		var department = departments[i].code;
-		var courses = coursesByDepartments[department];
-		for (var j = 0; j < courses.length; j++) {
-			if (courses[j].cnum === courseNumber) {
-				exactMatches.push(department + '.' + courses[j].cnum);
-			}
-			if (courses[j].cnum.match('^[A-Z]*' + courseNumber + '[A-Z]*$')) {
-				closeMatches.push(department + '.' + courses[j].cnum);
-			}
-		}
-	}
-	return exactMatches.length > 1 ? closeMatches : exactMatches;
+  var exactMatches = [];
+  var closeMatches = [];
+  for (var i = 0; i < departments.length; i++) {
+    var department = departments[i].code;
+    var courses = coursesByDepartments[department];
+    for (var j = 0; j < courses.length; j++) {
+      if (courses[j].cnum === courseNumber) {
+        exactMatches.push(department + '.' + courses[j].cnum);
+      }
+      if (courses[j].cnum.match('^[A-Z]*' + courseNumber + '[A-Z]*$')) {
+        closeMatches.push(department + '.' + courses[j].cnum);
+      }
+    }
+  }
+  return exactMatches.length > 1 ? closeMatches : exactMatches;
 }
 
 function findCoursesByDepartmentByTitle(title) {
-	var matches = [];
-	for (var i = 0; i < departments.length; i++) {
-		var department = departments[i].code;
-		var courses = coursesByDepartments[department];
-		for (var j = 0; j < courses.length; j++) {
-			if (courses[j].title.toUpperCase().indexOf(title) != -1) {
-				matches.push(department + '.' + courses[j].cnum);
-			}
-		}
-	}
-	return matches;
+  var matches = [];
+  for (var i = 0; i < departments.length; i++) {
+    var department = departments[i].code;
+    var courses = coursesByDepartments[department];
+    for (var j = 0; j < courses.length; j++) {
+      if (courses[j].title.toUpperCase().indexOf(title) != -1) {
+        matches.push(department + '.' + courses[j].cnum);
+      }
+    }
+  }
+  return matches;
 }
 
 // Returns titles for the given courses.
 // Returns an empty string for every course for which a title cannot be found.
 // Input must be a list of valid course IDs.
 function getTitles(courseIds) {
-	var titles = [];
-	for (var i = 0; i < courseIds.length; i++) {
-		var id = courseIds[i];
-		var courseNumber = id.split('.')[1];
-		var courses = coursesByDepartments[id.split('.')[0]];
-		var title = '';
-		for (var j = 0; j < courses.length; j++) {
-			if (courses[j].cnum === courseNumber) {
-				title = courses[j].title;
-				break;
-			}
-		}
-		titles.push(title);
-	}
-	return titles;
+  var titles = [];
+  for (var i = 0; i < courseIds.length; i++) {
+    var id = courseIds[i];
+    var courseNumber = id.split('.')[1];
+    var courses = coursesByDepartments[id.split('.')[0]];
+    var title = '';
+    for (var j = 0; j < courses.length; j++) {
+      if (courses[j].cnum === courseNumber) {
+        title = courses[j].title;
+        break;
+      }
+    }
+    titles.push(title);
+  }
+  return titles;
 }
 
 // Returns ScheduleBuilder ID for given course.
 function getScheduleBuilderId(code, courseNumber) {
-	var courses = coursesByDepartments[code];
-	for (var i = 0; i < courses.length; i++) {
-		if (courses[i].cnum === courseNumber) {
-			return courses[i].sbid;
-		}
-	}
-	return '';
+  var courses = coursesByDepartments[code];
+  for (var i = 0; i < courses.length; i++) {
+    if (courses[i].cnum === courseNumber) {
+      return courses[i].sbid;
+    }
+  }
+  return '';
 }
 
 // Returns a trimmed copy of the given string.
 function trim(s) {
-	return s.replace(/^\s+|\s+$/g, '');
+  return s.replace(/^\s+|\s+$/g, '');
 }
 
 // Returns the last chunk in the given list of chunks.
 function getLastChunk(chunks) {
-	return chunks[chunks.length - 1];
+  return chunks[chunks.length - 1];
 }
 
 // Returns the given string with the tail removed.
 function trimTail(s, tail) {
-	return s.split(tail)[0];
+  return s.split(tail)[0];
 }
