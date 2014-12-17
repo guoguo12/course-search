@@ -9,6 +9,12 @@ Project structure
 * `extension/` &ndash; Chrome extension
 * `server/` &ndash; PHP proxy responsible from sending requests to the [Berkeley Courses API](api.berkeley.edu) with this app's API credentials
 
+Development instructions
+------------------------
+Pull requests are welcome! To get started, clone this repo, then load the entire `extension/` directory into Chrome.
+
+Check out the official Chrome extension [development tutorials](https://developer.chrome.com/extensions/overview) for more info.
+
 Credits
 -------
 This project was built using [jQuery 1.11.1](https://jquery.com/) and [Font Awesome](https://fortawesome.github.io/Font-Awesome/). The font used is [Open Sans](http://www.google.com/fonts/specimen/Open+Sans).
