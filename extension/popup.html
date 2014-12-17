@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Search Berkeley Courses</title>
+    <link href="libraries/font-awesome.min.css" rel="stylesheet">
+    <link href="styles/popup.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="searchScreen" class="">
+      Search for UC Berkeley courses:
+      <form id="searchSubmit">
+        <input id="searchInput" type="text" placeholder="e.g. UGBA, 61A, Math 54, Introduction" autofocus>
+        <input type="submit" class="hidden">
+      </form>
+      <div id="searchStatus" class="note">Press Enter to submit.</div>
+    </div>
+    <div id="courseScreen" class="hidden">
+      <h1 id="courseHeader">COMPSCI X300AC <span class="h1Detail">(3 units)</span></h1>
+      <hr>
+      <h2 id="courseTitle">Structure and Interpretation of Computer Programs and Dinosaur Acrobatics</h2>
+      <hr>
+      <div id="courseDescription">
+      The CS 61 series is an introduction to computer science, with particular emphasis on software and on machines from a programmer's point of view. This first course concentrates mostly on the idea of abstraction, allowing the programmer to think in terms appropriate to the problem rather than in low-level operations dictated by the computer hardware. The next course, CS 61B, will deal with the more advanced engineering aspects of software, such as constructing and analyzing large programs. Finally, CS 61C concentrates on machines and how they carry out the programs you write.
+      </div>
+      <hr>
+      <div id="courseLinks">
+        <table>
+          <tr>
+            <td id="sb" title="ScheduleBuilder">builder</td>
+            <td id="bt" title="Berkeleytime">time</td>
+            <td id="osoc" title="Online Schedule of Classes">OSoC</td>
+            <td id="bltn" title="Berkeley Bulletin (General Catalog)">bulletin</td>
+            <td id="nc" title="Ninja Courses">ninja</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div id="disambigScreen" class="hidden">
+      <h1 id="disambigHeader">4 results found.</h1>
+      <hr>
+      <h2>Click on a course to learn more.</h2>
+      <hr>
+      <div id="disambigCourses">
+        <div class="courseResult">
+          <b>COMPSCI X300AC</b> &ndash; Structure and Interpretation of Computer Programs and Dinosaur Acrobatics 
+        </div>
+      </div>
+    </div>
+    <script src="libraries/jquery-1.11.1.min.js"></script>
+    <script src="data.js"></script>
+    <script src="logic.js"></script>
+  </body>
+</html>

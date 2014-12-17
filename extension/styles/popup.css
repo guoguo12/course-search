@@ -1,0 +1,162 @@
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/opensans.ttf');
+}
+
+* {
+    font-family: "Open Sans";
+}
+
+html {
+    background-color: white;
+}
+
+body {
+    color: #333;
+    font-size: 13px;
+    min-width: 350px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #AAA;
+    display: block;
+    height: 1px;
+    padding: 0;
+}
+
+h1 {
+    font-size: 21px;
+    font-weight: normal;
+    margin-bottom: 0px;
+}
+
+h2 {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input:focus {
+    outline: 0;
+}
+
+input[type=text] {
+    margin: 5px auto;
+    padding: 5px;
+    width: 95%;
+}
+
+.hidden {
+    display: none;
+}
+
+.h1Detail {
+    color: #999;
+    margin-left: 4px;
+}
+            
+.note {
+    font-size: 11px;
+    text-align: right;
+}
+
+.courseResult {
+    background-color: #CCC;
+    cursor: pointer;    
+    margin-bottom: 4px;
+    padding: 6px;
+    transition: background-color 100ms;
+}
+
+.courseResult:hover {
+    background-color: #AAA;
+}
+
+.fa {
+    margin-right: 5px;
+}
+
+.red {
+    color: #F70D1A;
+}
+
+.orange {
+    color: #E45E03;
+}
+
+#courseLinks {
+}
+
+#courseLinks table {
+    border-spacing: 0px;
+    padding: 0px;
+    width: 100%;
+}
+
+#courseLinks td {
+    border-bottom-style: solid;
+    border-bottom-width: 0px;
+    color: #FFF;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 30px;
+    opacity: 0.9;
+    text-align: center;
+    text-transform: lowercase;
+    transition: background-color 150ms;
+    width: 20%;
+}
+
+#sb {
+    background-color: #2C428F;
+    border-bottom-color: #FFCC00;
+}
+
+#bt {
+    background-color: #0886C5;
+    border-bottom-color: #5ab2de;
+}
+
+#osoc {
+    background-color: #32689a;
+    border-bottom-color: #4d80b3;
+}
+
+#bltn {
+    background-color: #203866;
+    border-bottom-color: #19619c;
+}
+
+#nc {
+    background-color: #262626;
+    border-bottom-color: #babdb6;
+}
+
+#sb:hover {
+    background-color: #1C327F;
+    border-bottom-color: #EFBC00;
+}
+
+#bt:hover {
+    background-color: #0876B5;
+    border-bottom-color: #4AA2CE;
+}
+
+#osoc:hover {
+    background-color: #22588A;
+    border-bottom-color: #3D70A3;
+}
+
+#bltn:hover {
+    background-color: #102856;
+    border-bottom-color: #09518C;
+}
+
+#nc:hover {
+    background-color: #161616;
+    border-bottom-color: #AAADA6;
+}
+

@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "Berkeley Course Search",
+  "version": "0.3.0",
+  "description": "Browse the UC Berkeley course catalog directly from your browser toolbar!",
+  "icons": {"16": "icons/icon16.png",
+            "48": "icons/icon48.png",
+            "128": "icons/icon128.png"},
+  "minimum_chrome_version": "35",
+  "permissions": ["contextMenus",
+                  "tabs",
+                  "http://www.ocf.berkeley.edu/",
+                  "https://www.ocf.berkeley.edu/"],
+  "browser_action": {
+    "default_icon": "icons/icon16.png",
+    "default_popup": "popup.html"
+  }
+}
