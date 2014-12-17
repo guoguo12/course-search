@@ -11,8 +11,6 @@ Project structure
 
 Credits
 -------
-This project was built using the following:
-* [jQuery 1.11.1](https://jquery.com/)
-* [Font Awesome](https://fortawesome.github.io/Font-Awesome/)
+This project was built using [jQuery 1.11.1](https://jquery.com/) and [Font Awesome](https://fortawesome.github.io/Font-Awesome/). The font used is [Open Sans](http://www.google.com/fonts/specimen/Open+Sans).
 
 This project also uses a single line of JavaScript code from [ScheduleBuilder](http://schedulebuilder.berkeley.edu) to accomplish [query expansion](https://en.wikipedia.org/wiki/Query_expansion) (e.g. converting `CS` into `COMPSCI`, the official department code). This line is in [data/generate-departments.js](https://github.com/guoguo12/course-search/blob/master/data/generate-departments.js#L7), and is clearly marked.
