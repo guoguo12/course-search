@@ -5,6 +5,14 @@ course-search
 
 Project structure
 -----------------
-* `data/` contains
-* `extension/` contains
-* `server/` contains the PHP code that runs on the server&mdash;oh my god I forgot to omit the API key
+* `data/` &ndash; scripts used to compile information about courses
+* `extension/` &ndash; Chrome extension
+* `server/` &ndash; PHP proxy responsible from sending requests to the [Berkeley Courses API](api.berkeley.edu) with this app's API credentials
+
+Credits
+-------
+This project was built using the following:
+* [jQuery 1.11.1](https://jquery.com/)
+* [Font Awesome](https://fortawesome.github.io/Font-Awesome/)
+
+This project also uses a single line of JavaScript code from [ScheduleBuilder](http://schedulebuilder.berkeley.edu) to accomplish [query expansion](https://en.wikipedia.org/wiki/Query_expansion) (e.g. converting `CS` into `COMPSCI`, the official department code). This line is in [data/generate-departments.js](https://github.com/guoguo12/course-search/blob/master/data/generate-departments.js#L7), and is clearly marked.
